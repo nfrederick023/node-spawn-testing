@@ -1,0 +1,67 @@
+#This file should be copied or downloaded to /etc/contrast/java
+#Contrast UI properties
+#Use the properties in this section to connect the Java agent to the Contrast UI. The proxy settings allow the agent to communicate with the Contrast UI over a proxy.
+api:
+  url: https://app.contrastsecurity.com/Contrast
+  api_key: 
+  service_key: 
+  user_name:
+
+#Agent-Specific Properties
+#Use the properties in this section to apply any Java agent-wide configurations.
+#Configure the Java agent to skip its application discovery algorithm, and instead associate all libraries, vulnerabilities, and web traffic to a single application
+#with the name specified by this property. This configuration is preferred when deploying Java SE applications with
+#embedded web servers (e.g., applications built with Spring Boot, Dropwizard, and embedded Jetty).
+#When used with an application server, this configuration associates all web traffic with the single, standalone application, including web traffic
+#handled by application server-hosted endpoints that wouldn't be associated with a discovered application otherwise.
+#Note: This settings takes preferences over the application.name setting.
+agent:
+  #java:
+#    standalone_app_name: <name of the application>
+  security_logger:
+     path: /var/log/contrast/security.log
+#Contrast Assess properties
+#Use the properties in this section to control Assess in the Java agent.
+#NOTE: Enabling assess will cause code intrumentation that may cause performance issues. This should be enabled only in dev and sit.
+  logger:
+    path: ./debug_contrast_agent.log
+    level: trace
+
+assess:
+  enable: true
+
+#Contrast Protect properties
+#Use the properties in this section to control Protect features and rules.
+#Enable set to true in Pre-PROD & PROD.
+protect:
+  enable: false
+
+#Application properties
+#Use the properties in this section to control the application(s) hosting this agent.
+application:
+  name: 
+  group: 
+  tags:
+
+#Server properties
+#Use the properties in this section to set metadata for the server hosting this agent.
+#NOTE: Supported values for server.environment property below are - development, QA, Production
+#Note: Values for server.tags should match our environment names.
+server:
+  environment: <tagenv>
+  tags: <contrastenv>
+
+#Security logging
+#Use the properties in this section to control security logging. These logs allow you to watch Protect as it monitors and blocks attacks against your application.
+#They are written to the specified file in the Common Event Format (CEF). The Syslog settings allow you to send security logs to remote servers.
+syslog:
+#enable: Set to true to enable Syslog logging.
+#ip: Set the IP address of the Syslog server to which the agent should send messages.
+#port: Set the port of the Syslog server to which the agent should send messages.
+#facility: Set the facility code of the messages the agent sends to Syslog.
+#severity_exploited: Set the log level of Exploited attacks. Value options are ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFO, and DEBUG.
+#severity_blocked: Set the log level of Blocked attacks. Value options are ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFO, and DEBUG.
+#severity_probed: Set the log level of Probed attacks. Value options are ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFO, and DEBUG.
+#heartbeat:
+#enable: Set to true to enable the Syslog heartbeat. The heartbeat will issue a Syslog message at the INFO level after every interval passes.
+#interval_ms: Set the interval of the Syslog server for which to send heartbeat messages to the Syslog server (in milliseconds). The default value is 60000.

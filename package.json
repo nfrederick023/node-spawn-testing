@@ -1,0 +1,52 @@
+{
+  "name": "contrasttesting",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "rimraf dist && webpack --mode development",
+    "start": "nodemon --watch \"src/**/*.ts\" --ignore \"node_modules/**/*\" --exec ts-node src/index.ts",
+    "start:prod": "cross-env NODE_ENV=production node dist/index.js",
+    "start:contrast": "node -r @contrast/agent dist/server.js"
+  },
+  "dependencies": {
+    "@contrast/agent": "^4.25.2",
+    "@tsed/ajv": "^7.0.1",
+    "@tsed/common": "^7.0.1",
+    "@tsed/core": "^7.0.1",
+    "@tsed/di": "^7.0.1",
+    "@tsed/engines": "^7.0.1",
+    "@tsed/exceptions": "^7.0.1",
+    "@tsed/json-mapper": "^7.0.1",
+    "@tsed/logger": "^6.3.2",
+    "@tsed/logger-file": "^6.3.2",
+    "@tsed/platform-cache": "^7.0.1",
+    "@tsed/platform-exceptions": "^7.0.1",
+    "@tsed/platform-express": "^7.0.1",
+    "@tsed/platform-log-middleware": "^7.0.1",
+    "@tsed/platform-middlewares": "^7.0.1",
+    "@tsed/platform-params": "^7.0.1",
+    "@tsed/platform-response-filter": "^7.0.1",
+    "@tsed/platform-views": "^7.0.1",
+    "@tsed/schema": "^7.0.1",
+    "ajv": "^8.11.0",
+    "express": "^4.18.2",
+    "webpack": "^5.73.0",
+    "nodemon": "^2.0.18",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0",
+    "ts-loader": "^9.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.4",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.1.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  },
+  "tsed": {
+    "packageManager": "npm",
+    "convention": "default",
+    "architecture": "default"
+  }
+}
